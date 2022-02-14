@@ -15,12 +15,10 @@
 
 Handler handler;
 
-void collision() {
+void bulletCollision() {
 	for (int i = 1; i < handler.size(); i++) {
 		if (handler.getObject(i)->getID() == "Bullet") {
-			
 			float tempBulX = handler.getObject(i)->getX(), tempBulY = handler.getObject(i)->getY();
-			
 			for (int j = 1; j < handler.size(); j++) {
 				float tempX = handler.getObject(j)->getX(), tempY = handler.getObject(j)->getY();
 				if ((abs(tempX - tempBulX) < 11) && (abs(tempY - tempBulY) < 11) && (handler.getObject(j)->getID() != "Bullet")) {
@@ -36,7 +34,7 @@ void playerCollision() {
 	float tempPlayerX = handler.getObject(0)->getX(), tempPlayerY = handler.getObject(0)->getY();
 	for (int i = 1; i < handler.size(); i++) {
 		float tempX = handler.getObject(i)->getX(), tempY = handler.getObject(i)->getY();;
-		if (abs(tempPlayerX - tempX) < 11 && abs(tempPlayerY - tempY) && handler.getObject(i)->getID() != "Bullet") {
+		if (abs(tempPlayerX - tempX) < 11 && abs(tempPlayerY - tempY) < 11 && handler.getObject(i)->getID() != "Bullet") {
 			handler.removeObject(0);
 		}
 	}
@@ -161,16 +159,12 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 
 float main(void) {
 
-	handler.addObject(new Player(1000, 1000, 5, 5));
-
-	handler.addObject(new BasicEnemy(500, 500, 0, 0));
-
-	handler.addObject(new BasicEnemy(1500, 1500, 0, 0));
-
-	handler.addObject(new FollowingEnemy(1700, 1700, 0, 0, handler.getObject(0)));
-
 	srand(time(0));
 
+	handler.addObject(new Player(1000, 1000, 5, 5));
+	handler.addObject(new BasicEnemy(500, 500, 0, 0));
+	handler.addObject(new BasicEnemy(1500, 1500, 0, 0));
+	handler.addObject(new FollowingEnemy(1700, 1700, 0, 0, handler.getObject(0)));
 
 	GLFWwindow* window;
 
@@ -205,17 +199,12 @@ float main(void) {
 	if (glewInit() != GLEW_OK) {
 		std::cout << "error" << std::endl;
 	}
-
 	std::cout << glGetString(GL_VERSION) << std::endl;
-
-
-
-
 
 	/* Loop until the user closes the window */
 	while (!glfwWindowShouldClose(window)) {
 
-		collision();
+		bulletCollision();
 		playerCollision();
 		handler.tick();
 		//std::cout << handler->getObject(0)->getID() << std::endl;
