@@ -36,7 +36,7 @@ void playerCollision() {
 	float tempPlayerX = handler.getObject(0)->getX(), tempPlayerY = handler.getObject(0)->getY();
 	for (int i = 1; i < handler.size(); i++) {
 		float tempX = handler.getObject(i)->getX(), tempY = handler.getObject(i)->getY();;
-		if (abs(tempPlayerX - tempX) < 11 && abs(tempPlayerY - tempY) && handler.getObject(i)->getID() != "Bullet") {
+		if (abs(tempPlayerX - tempX) < 11 && abs(tempPlayerY - tempY) < 11 && handler.getObject(i)->getID() != "Bullet") {
 			handler.removeObject(0);
 		}
 	}
