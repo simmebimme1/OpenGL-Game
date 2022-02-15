@@ -17,6 +17,7 @@ public:
 	float getVelX();
 	float getVelY();
 	float getVertex(int i);
+	float getSize();
 
 	void setID(std::string ID);
 	std::string getID();

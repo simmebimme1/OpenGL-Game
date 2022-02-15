@@ -21,6 +21,7 @@ public:
 	virtual void setPercievedX(float x);
 	virtual float getPercievedY();
 	virtual void setPercievedY(float y);
+	virtual float getSize();
 
 	virtual void setID(std::string ID) = 0;
 	virtual std::string getID() = 0;
