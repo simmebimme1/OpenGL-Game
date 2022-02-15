@@ -8,20 +8,20 @@ void Handler::addObject(GameObject* object) {
 	this->gameObjects.push_back(object);
 }
 
-void Handler::removeObject(float i) {
+void Handler::removeObject(int i) {
 	this->gameObjects.erase(gameObjects.begin() + i);
 }
 
 void Handler::tick() {
-	for (float i = 0; i < this->gameObjects.size(); i++) {
+	for (int i = 0; i < this->gameObjects.size(); i++) {
 		this->gameObjects.at(i)->tick();
 	}
 }
 
-float Handler::size() {
+int Handler::size() {
 	return this->gameObjects.size();
 }
 
-GameObject* Handler::getObject(float i) {
+GameObject* Handler::getObject(int i) {
 	return this->gameObjects.at(i);
 }

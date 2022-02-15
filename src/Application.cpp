@@ -158,7 +158,7 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 }
 
 
-float main(void) {
+int main(void) {
 
 	srand(time(0));
 
@@ -168,10 +168,11 @@ float main(void) {
 	handler.addObject(new FollowingEnemy(1700, 1700, 0, 0, handler.getObject(0)));
 
 	GLFWwindow* window;
-
 	/* Initialize the library */
-	if (!glfwInit())
+	if (!glfwInit()) {
+		std::cout << "Error initializing OpenGL library" << std::endl;
 		return -1;
+	}
 	
 	GLFWmonitor* primary = glfwGetPrimaryMonitor();
 	const GLFWvidmode* mode = glfwGetVideoMode(primary);

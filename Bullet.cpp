@@ -10,7 +10,7 @@ Bullet::Bullet(float x, float y, float velX, float velY) {
 	this->velY = velY;
 	this->ID = "Bullet";
 
-	this->size = 2.0;
+	this->size = 2;
 	this->colorArray[0] = 1.0f;
 	this->colorArray[1] = 0.5f;
 	this->colorArray[2] = 0.5f;

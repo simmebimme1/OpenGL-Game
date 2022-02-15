@@ -8,11 +8,11 @@ public:
 
 	Handler();
 
-	GameObject* getObject(float i);
+	GameObject* getObject(int i);
 	void addObject(GameObject* object);
-	void removeObject(float i);
+	void removeObject(int i);
 	void tick();
-	float size();
+	int size();
 
 
 private:

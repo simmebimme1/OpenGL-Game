@@ -29,8 +29,8 @@ public:
 private:
 
 protected:
-	float velX, velY;
-	float x, y, size;
+	float velX, velY, x, y;
+	int size;
 	std::string ID;
 	float colorArray[3];
 	float vertex[4];
