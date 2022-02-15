@@ -23,9 +23,9 @@ void bulletCollision() {
 				float tempX = handler.getObject(j)->getX(), tempY = handler.getObject(j)->getY();
 				if ((abs(tempX - tempBulX) < 11) && (abs(tempY - tempBulY) < 11) && (handler.getObject(j)->getID() != "Bullet")) {
 					handler.removeObject(j);
-					handler.removeObject(i-1);
+					if (j < i) handler.removeObject(i - 1);
+					else handler.removeObject(i);
 				}
-
 			}
 		}
 	}
