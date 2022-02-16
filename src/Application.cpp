@@ -12,7 +12,7 @@
 #include "FollowingEnemy.h"
 #include "Bullet.h"
 
-
+int width, height;
 Handler handler;
 
 void bulletCollision() {
@@ -21,7 +21,7 @@ void bulletCollision() {
 			float tempBulX = handler.getObject(i)->getX(), tempBulY = handler.getObject(i)->getY();
 			for (int j = 1; j < handler.size(); j++) {
 				float tempX = handler.getObject(j)->getX(), tempY = handler.getObject(j)->getY();
-				if ((abs(tempX - tempBulX) < (handler.getObject(j)->getSize())) && (abs(tempY - tempBulY) < (handler.getObject(j)->getSize() + 1)) && (handler.getObject(j)->getID() != "Bullet")) {
+				if ((abs(tempX - tempBulX) < (handler.getObject(j)->getSize()) + 1) && (abs(tempY - tempBulY) < (handler.getObject(j)->getSize() + 1)) && (handler.getObject(j)->getID() != "Bullet")) {
 					handler.removeObject(j);
 					if (j < i) handler.removeObject(i - 1);
 					else handler.removeObject(i);
@@ -35,7 +35,7 @@ void playerCollision() {
 	float tempPlayerX = handler.getObject(0)->getX(), tempPlayerY = handler.getObject(0)->getY();
 	for (int i = 1; i < handler.size(); i++) {
 		float tempX = handler.getObject(i)->getX(), tempY = handler.getObject(i)->getY();;
-		if (abs(tempPlayerX - tempX) < 11 && abs(tempPlayerY - tempY) < 11 && handler.getObject(i)->getID() != "Bullet") {
+		if (abs(tempPlayerX - tempX) < (handler.getObject(i)->getSize() + 1) && abs(tempPlayerY - tempY) < (handler.getObject(i)->getSize() + 1) && handler.getObject(i)->getID() != "Bullet") {
 			handler.removeObject(0);
 		}
 	}
@@ -44,12 +44,14 @@ void playerCollision() {
 double mouseX = 0, mouseY = 0;
 float bulletX = 0, bulletY = 0, bulletVector = 0;
 
+
+
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods){
 
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS && handler.getObject(0)->getID() == "Player") {
 		glfwGetCursorPos(window, &mouseX, &mouseY);
-		mouseX *= (2000.0 / 2560.0);
-		mouseY *= (2000.0 / 1440.0);
+		mouseX *= (2000.0 / width);
+		mouseY *= (2000.0 / height);
 		
 		bulletX = (float)mouseX - handler.getObject(0)->getX();
 		bulletY = -1*((float)mouseY - handler.getObject(0)->getY());
@@ -172,9 +174,10 @@ int main(void) {
 		std::cout << "Error initializing OpenGL library" << std::endl;
 		return -1;
 	}
-	
+
 	GLFWmonitor* primary = glfwGetPrimaryMonitor();
 	const GLFWvidmode* mode = glfwGetVideoMode(primary);
+	glfwGetMonitorWorkarea(primary, NULL, NULL, &width, &height);
 
 	glfwWindowHint(GLFW_RED_BITS, mode->redBits);
 	glfwWindowHint(GLFW_GREEN_BITS, mode->greenBits);
