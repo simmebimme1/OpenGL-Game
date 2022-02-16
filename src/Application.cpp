@@ -154,7 +154,6 @@ void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods
 	if (key == GLFW_KEY_ESCAPE) {
 		glfwSetWindowShouldClose(window, 1);
 	}
-	
 }
 
 int main(void) {
@@ -184,8 +183,7 @@ int main(void) {
 
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(mode->width, mode->height, "OpenGL Game", primary, NULL);
-	if (!window)
-	{
+	if (!window) {
 		glfwTerminate();
 		return -1;
 	}
@@ -208,11 +206,10 @@ int main(void) {
 		playerCollision();
 		handler.tick();
 		//std::cout << handler->getObject(0)->getID() << std::endl;
-		
 			glClear(GL_COLOR_BUFFER_BIT);
-
+			
 			glBegin(GL_QUADS);
-
+			
 			for (int i = 0; i < handler.size(); i++) {
 				float vertex[4];
 				float* colorArray = handler.getObject(i)->getColor();
@@ -222,14 +219,11 @@ int main(void) {
 				for (int j = 0; j < 4; j++) {
 					vertex[j] = handler.getObject(i)->getVertex(j);
 				}
-
 				glVertex2f(-1.0f + vertex[0] / 1000.0f, -1.0f + vertex[3] / 1000.0f);
 				glVertex2f(-1.0f + vertex[1] / 1000.0f, -1.0f + vertex[3] / 1000.0f);
 				glVertex2f(-1.0f + vertex[1] / 1000.0f, -1.0f + vertex[2] / 1000.0f);
 				glVertex2f(-1.0f + vertex[0] / 1000.0f, -1.0f + vertex[2] / 1000.0f);
-
 			}
-
 			glEnd();
 
 			/* Swap front and back buffers */
@@ -238,7 +232,6 @@ int main(void) {
 			/* Poll for and process events */
 			glfwPollEvents();
 	}
-
 	glfwTerminate();
 	return 0;
 }
