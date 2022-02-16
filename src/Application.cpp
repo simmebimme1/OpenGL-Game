@@ -44,8 +44,6 @@ void playerCollision() {
 double mouseX = 0, mouseY = 0;
 float bulletX = 0, bulletY = 0, bulletVector = 0;
 
-
-
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods){
 
 	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS && handler.getObject(0)->getID() == "Player") {
@@ -184,7 +182,6 @@ int main(void) {
 	glfwWindowHint(GLFW_BLUE_BITS, mode->blueBits);
 	glfwWindowHint(GLFW_REFRESH_RATE, mode->refreshRate);
 
-
 	/* Create a windowed mode window and its OpenGL context */
 	window = glfwCreateWindow(mode->width, mode->height, "OpenGL Game", primary, NULL);
 	if (!window)
@@ -195,7 +192,6 @@ int main(void) {
 
 	glfwSetKeyCallback(window, keyCallback);
 	glfwSetMouseButtonCallback(window, mouse_button_callback);
-
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
@@ -213,7 +209,6 @@ int main(void) {
 		handler.tick();
 		//std::cout << handler->getObject(0)->getID() << std::endl;
 		
-
 			glClear(GL_COLOR_BUFFER_BIT);
 
 			glBegin(GL_QUADS);
@@ -233,7 +228,6 @@ int main(void) {
 				glVertex2f(-1.0f + vertex[1] / 1000.0f, -1.0f + vertex[2] / 1000.0f);
 				glVertex2f(-1.0f + vertex[0] / 1000.0f, -1.0f + vertex[2] / 1000.0f);
 
-
 			}
 
 			glEnd();
@@ -243,8 +237,6 @@ int main(void) {
 
 			/* Poll for and process events */
 			glfwPollEvents();
-
-			//std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 	}
 
 	glfwTerminate();
