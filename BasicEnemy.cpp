@@ -85,3 +85,7 @@ float BasicEnemy::getVelY() {
 float BasicEnemy::getVertex(int i) {
 	return this->vertex[i];
 }
+
+float BasicEnemy::getSize() {
+	return this->size;
+}

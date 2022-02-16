@@ -21,7 +21,7 @@ void bulletCollision() {
 			float tempBulX = handler.getObject(i)->getX(), tempBulY = handler.getObject(i)->getY();
 			for (int j = 1; j < handler.size(); j++) {
 				float tempX = handler.getObject(j)->getX(), tempY = handler.getObject(j)->getY();
-				if ((abs(tempX - tempBulX) < 11) && (abs(tempY - tempBulY) < 11) && (handler.getObject(j)->getID() != "Bullet")) {
+				if ((abs(tempX - tempBulX) < (handler.getObject(j)->getSize())) && (abs(tempY - tempBulY) < (handler.getObject(j)->getSize() + 1)) && (handler.getObject(j)->getID() != "Bullet")) {
 					handler.removeObject(j);
 					if (j < i) handler.removeObject(i - 1);
 					else handler.removeObject(i);

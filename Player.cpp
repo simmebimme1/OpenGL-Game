@@ -103,3 +103,7 @@ float Player::getPercievedY() {
 void Player::setPercievedY(float y) {
 	this->percievedVelY = y;
 }
+
+float Player::getSize() {
+	return this->size;
+}

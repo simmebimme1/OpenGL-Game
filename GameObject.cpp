@@ -89,3 +89,7 @@ float GameObject::getPercievedY() {
 void GameObject::setPercievedY(float y) {
 	
 }
+
+float GameObject::getSize() {
+	return this->size;
+}

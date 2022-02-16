@@ -107,3 +107,7 @@ float FollowingEnemy::getVelY() {
 float FollowingEnemy::getVertex(int i) {
 	return this->vertex[i];
 }
+
+float FollowingEnemy::getSize() {
+	return this->size;
+}
